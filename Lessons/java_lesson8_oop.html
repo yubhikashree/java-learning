@@ -1,0 +1,261 @@
+
+<style>
+  .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1rem}
+  .badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);margin-bottom:10px}
+  .badge-teal{background:var(--color-background-success);color:var(--color-text-success)}
+  .badge-purple{background:#EEEDFE;color:#3C3489}
+  .badge-amber{background:var(--color-background-warning);color:var(--color-text-warning)}
+  .badge-red{background:var(--color-background-error);color:var(--color-text-error)}
+  .badge-blue{background:var(--color-background-info);color:var(--color-text-info)}
+  @media(prefers-color-scheme:dark){.badge-purple{background:#26215C;color:#AFA9EC}}
+  .code-block{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem 1.25rem;font-family:var(--font-mono);font-size:13px;line-height:1.8;margin:0.75rem 0;overflow-x:auto;white-space:pre}
+  .annotation{display:flex;gap:10px;align-items:flex-start;margin:7px 0;font-size:13px;color:var(--color-text-secondary)}
+  .ann-num{min-width:22px;height:22px;border-radius:50%;background:var(--color-background-info);color:var(--color-text-info);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;flex-shrink:0}
+  h3{font-size:16px;font-weight:500;margin:0 0 0.5rem}
+  p{font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin:0 0 0.75rem}
+  code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-tertiary);padding:1px 5px;border-radius:4px}
+  .highlight{color:var(--color-text-primary);font-weight:500}
+  .tip-box{background:var(--color-background-success);border-left:3px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-success)}
+  .warn-box{background:var(--color-background-warning);border-left:3px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-warning)}
+  .rule-box{background:var(--color-background-error);border-left:3px solid var(--color-border-error);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-error)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0.75rem 0}
+  .cell{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem 1rem}
+  .cell-label{font-size:11px;font-weight:600;color:var(--color-text-tertiary);margin-bottom:6px}
+  .blueprint{border:2px dashed var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:0.75rem 0}
+  .bp-title{font-size:12px;font-weight:600;color:var(--color-text-tertiary);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+  .bp-section{margin-bottom:8px}
+  .bp-label{font-size:11px;color:var(--color-text-tertiary);margin-bottom:4px}
+  .bp-item{font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);padding:3px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+  .object-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0.75rem 0}
+  .obj-box{background:var(--color-background-secondary);border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:0.75rem;text-align:center}
+  .obj-title{font-size:11px;font-weight:600;color:var(--color-text-info);margin-bottom:6px}
+  .obj-field{font-size:11px;font-family:var(--font-mono);color:var(--color-text-secondary);line-height:1.9}
+  .flow{display:flex;align-items:center;gap:8px;margin:0.75rem 0;flex-wrap:wrap}
+  .flow-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:6px 12px;font-size:13px;font-family:var(--font-mono)}
+  .flow-arrow{color:var(--color-text-tertiary);font-size:18px;font-weight:300}
+</style>
+
+<div class="card">
+  <span class="badge badge-teal">Lesson 8 of Phase 0</span>
+  <h3>OOP — Classes and Objects</h3>
+  <p>Object Oriented Programming is the most important paradigm in software development. Every major application — from Instagram to Google Maps to banking systems — is built with OOP. This is where Java becomes truly powerful.</p>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 1 — Class vs Object</span>
+  <h3>The blueprint and the building</h3>
+  <div class="grid2">
+    <div class="cell">
+      <div class="cell-label">Class = Blueprint</div>
+      <p style="font-size:13px;margin:0">Defines what a Student <em>looks like</em> — what data it holds and what it can do. Only exists as a definition. No memory used yet.</p>
+    </div>
+    <div class="cell">
+      <div class="cell-label">Object = Actual instance</div>
+      <p style="font-size:13px;margin:0">A real Student created from the blueprint. Takes up memory. Has its own specific values. You can create hundreds of objects from one class.</p>
+    </div>
+  </div>
+  <div class="blueprint">
+    <div class="bp-title">📋 Class: Student (blueprint)</div>
+    <div class="bp-section">
+      <div class="bp-label">Fields (data)</div>
+      <div class="bp-item">String name</div>
+      <div class="bp-item">int rollNumber</div>
+      <div class="bp-item">double marks</div>
+    </div>
+    <div class="bp-section" style="margin-top:8px">
+      <div class="bp-label">Methods (behaviour)</div>
+      <div class="bp-item">getGrade()</div>
+      <div class="bp-item">printReport()</div>
+    </div>
+  </div>
+  <div class="object-grid">
+    <div class="obj-box">
+      <div class="obj-title">Object: s1</div>
+      <div class="obj-field">name = "Yubhi"</div>
+      <div class="obj-field">roll = 101</div>
+      <div class="obj-field">marks = 92.5</div>
+    </div>
+    <div class="obj-box">
+      <div class="obj-title">Object: s2</div>
+      <div class="obj-field">name = "Arun"</div>
+      <div class="obj-field">roll = 102</div>
+      <div class="obj-field">marks = 78.0</div>
+    </div>
+    <div class="obj-box">
+      <div class="obj-title">Object: s3</div>
+      <div class="obj-field">name = "Priya"</div>
+      <div class="obj-field">roll = 103</div>
+      <div class="obj-field">marks = 85.5</div>
+    </div>
+  </div>
+  <p>One blueprint — three completely independent students, each with their own data.</p>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 2 — Writing your first class</span>
+  <h3>Two files — one class, one main</h3>
+  <div class="warn-box">⚠️ From now on, your programs will have TWO files: <code>Student.java</code> defines the class. <code>Main.java</code> creates objects and uses them. One public class per file — the rule you already know.</div>
+  <div class="code-block">// File 1: Student.java
+public class Student {
+
+    // Fields — data each student holds
+    String name;
+    int rollNumber;
+    double marks;
+
+    // Method — behaviour the student has
+    public String getGrade() {
+        if (marks >= 90) return "A";
+        else if (marks >= 75) return "B";
+        else if (marks >= 60) return "C";
+        else return "F";
+    }
+
+    public void printReport() {
+        System.out.println("--- Student Report ---");
+        System.out.println("Name   : " + name);
+        System.out.println("Roll No: " + rollNumber);
+        System.out.println("Marks  : " + marks);
+        System.out.println("Grade  : " + getGrade());
+    }
+}</div>
+  <div class="code-block">// File 2: Main.java
+public class Main {
+    public static void main(String[] args) {
+
+        // Creating objects using 'new'
+        Student s1 = new Student();
+        s1.name = "Yubhi";
+        s1.rollNumber = 101;
+        s1.marks = 92.5;
+
+        Student s2 = new Student();
+        s2.name = "Arun";
+        s2.rollNumber = 102;
+        s2.marks = 78.0;
+
+        // Calling methods on objects
+        s1.printReport();
+        s2.printReport();
+    }
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>Student s1 = new Student()</code> — <code>new</code> creates an object in memory. <code>s1</code> is a reference variable pointing to that object.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><code>s1.name = "Yubhi"</code> — the dot operator accesses a field or method of an object. Same dot you've been using on Strings all along.</div></div>
+  <div class="annotation"><div class="ann-num">3</div><div>Methods inside the class don't need <code>static</code> — they belong to an object, not the class itself. This is why <code>static</code> was needed before — now you have real objects.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 3 — Constructors</span>
+  <h3>Setting values at the moment of creation</h3>
+  <p>Right now you create an object and then set each field separately. A <span class="highlight">constructor</span> lets you set everything in one line at the moment of creation — like filling a form when you first register a student.</p>
+  <div class="code-block">public class Student {
+
+    String name;
+    int rollNumber;
+    double marks;
+
+    // Constructor — same name as class, no return type
+    public Student(String name, int rollNumber, double marks) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.marks = marks;
+    }
+
+    public String getGrade() {
+        if (marks >= 90) return "A";
+        else if (marks >= 75) return "B";
+        else if (marks >= 60) return "C";
+        else return "F";
+    }
+
+    public void printReport() {
+        System.out.println("Name: " + name + " | Roll: "
+            + rollNumber + " | Grade: " + getGrade());
+    }
+}</div>
+  <div class="code-block">// Main.java — cleaner object creation
+public class Main {
+    public static void main(String[] args) {
+
+        // One line per student — much cleaner
+        Student s1 = new Student("Yubhi", 101, 92.5);
+        Student s2 = new Student("Arun",  102, 78.0);
+        Student s3 = new Student("Priya", 103, 85.5);
+
+        s1.printReport();
+        s2.printReport();
+        s3.printReport();
+    }
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>this.name = name</code> — <code>this</code> refers to the current object. The left side <code>this.name</code> is the field. The right side <code>name</code> is the parameter. This distinguishes them when they share the same name.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div>Constructor has no return type — not even <code>void</code>. It has the exact same name as the class. Java calls it automatically when you write <code>new Student(...)</code>.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 4 — Encapsulation</span>
+  <h3>Protecting your data with private + getters/setters</h3>
+  <p>Right now anyone can directly change a student's marks: <code>s1.marks = -50</code>. That's dangerous. <span class="highlight">Encapsulation</span> means hiding data and controlling access through methods.</p>
+  <div class="code-block">public class Student {
+
+    // private — no direct access from outside
+    private String name;
+    private int rollNumber;
+    private double marks;
+
+    public Student(String name, int rollNumber, double marks) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        setMarks(marks);  // use setter for validation
+    }
+
+    // Getter — controlled read access
+    public String getName()     { return name; }
+    public int getRollNumber()  { return rollNumber; }
+    public double getMarks()    { return marks; }
+
+    // Setter — controlled write access with validation
+    public void setMarks(double marks) {
+        if (marks >= 0 && marks <= 100) {
+            this.marks = marks;
+        } else {
+            System.out.println("Invalid marks. Must be 0–100.");
+        }
+    }
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>private</code> fields cannot be accessed with <code>s1.marks</code> from outside the class — Java gives a compile error. The only way in is through the getter/setter methods you provide.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div>The setter validates input before storing it. <code>s1.setMarks(-50)</code> prints an error instead of corrupting the data. This is the real power of encapsulation.</div></div>
+  <div class="tip-box">💡 <strong>Industry standard:</strong> Always make fields <code>private</code>. Always provide <code>public</code> getters and setters. This is the first thing senior developers check in a code review.</div>
+</div>
+
+<div class="card">
+  <span class="badge badge-amber">Part 5 — Array of objects</span>
+  <h3>Managing multiple students efficiently</h3>
+  <div class="code-block">public class Main {
+    public static void main(String[] args) {
+
+        // Array of Student objects
+        Student[] students = new Student[3];
+        students[0] = new Student("Yubhi", 101, 92.5);
+        students[1] = new Student("Arun",  102, 78.0);
+        students[2] = new Student("Priya", 103, 85.5);
+
+        // Loop through and print all reports
+        for (Student s : students) {
+            s.printReport();
+        }
+
+        // Find topper
+        Student topper = students[0];
+        for (int i = 1; i < students.length; i++) {
+            if (students[i].getMarks() > topper.getMarks()) {
+                topper = students[i];
+            }
+        }
+        System.out.println("Topper: " + topper.getName());
+    }
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div>An array of objects works exactly like an array of ints — but each slot holds an object reference instead of a number.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div>The topper-finding logic is the same index-tracking pattern from Lesson 6 — but now comparing objects using their getter methods.</div></div>
+</div>
+
+<button onclick="sendPrompt('I have read Lesson 8. Give me the exercises.')" style="margin-top:0.5rem;padding:10px 20px;font-size:14px;cursor:pointer;border-radius:var(--border-radius-md)">I have read this — give me the exercises ↗</button>

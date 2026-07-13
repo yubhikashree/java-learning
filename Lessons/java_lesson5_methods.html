@@ -1,0 +1,181 @@
+
+<style>
+  .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1rem}
+  .badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);margin-bottom:10px}
+  .badge-teal{background:var(--color-background-success);color:var(--color-text-success)}
+  .badge-purple{background:#EEEDFE;color:#3C3489}
+  .badge-amber{background:var(--color-background-warning);color:var(--color-text-warning)}
+  .badge-red{background:var(--color-background-error);color:var(--color-text-error)}
+  @media(prefers-color-scheme:dark){.badge-purple{background:#26215C;color:#AFA9EC}}
+  .code-block{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem 1.25rem;font-family:var(--font-mono);font-size:13px;line-height:1.8;margin:0.75rem 0;overflow-x:auto;white-space:pre}
+  .annotation{display:flex;gap:10px;align-items:flex-start;margin:7px 0;font-size:13px;color:var(--color-text-secondary)}
+  .ann-num{min-width:22px;height:22px;border-radius:50%;background:var(--color-background-info);color:var(--color-text-info);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;flex-shrink:0}
+  h3{font-size:16px;font-weight:500;margin:0 0 0.5rem}
+  p{font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin:0 0 0.75rem}
+  code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-tertiary);padding:1px 5px;border-radius:4px}
+  .highlight{color:var(--color-text-primary);font-weight:500}
+  .tip-box{background:var(--color-background-success);border-left:3px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-success)}
+  .warn-box{background:var(--color-background-warning);border-left:3px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-warning)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0.75rem 0}
+  .cell{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem 1rem}
+  .cell-label{font-size:11px;font-weight:600;color:var(--color-text-tertiary);margin-bottom:6px}
+  .flow{display:flex;align-items:center;gap:8px;margin:0.75rem 0;flex-wrap:wrap}
+  .flow-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:6px 12px;font-size:13px;font-family:var(--font-mono)}
+  .flow-arrow{color:var(--color-text-tertiary);font-size:16px}
+</style>
+
+<div class="card">
+  <span class="badge badge-teal">Lesson 5 of Phase 0</span>
+  <h3>Methods — Packaging logic into reusable blocks</h3>
+  <p>A method is a named block of code that does one specific job. Instead of writing the same logic repeatedly, you write it once, name it, and call it whenever needed. This is the foundation of every program larger than 50 lines.</p>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 1 — void method: does a job, returns nothing</span>
+  <h3>The simplest method — just does something</h3>
+  <div class="code-block">public class Main {
+
+    // method defined beside main — not inside it
+    static void greet(String name) {
+        System.out.println("Hello, " + name + "!");
+        System.out.println("Welcome to Java.");
+    }
+
+    public static void main(String[] args) {
+        greet("Yubhi");   // call 1
+        greet("Arun");    // call 2 — same method, different input
+        greet("Priya");   // call 3
+    }
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>void</code> means this method gives nothing back. It just does its job and finishes. No <code>return</code> statement needed.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><code>String name</code> is the parameter — the input the method accepts. When you call <code>greet("Yubhi")</code>, the value <code>"Yubhi"</code> gets copied into <code>name</code> inside the method.</div></div>
+  <div class="annotation"><div class="ann-num">3</div><div>The same method runs three times with three different names. That's the power of methods — write once, use anywhere.</div></div>
+  <div class="tip-box">💡 <strong>DRY principle again:</strong> Without this method you'd write those two println statements three times — 6 lines. With the method — 3 lines. In a real program with 100 calls, this difference is enormous.</div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 2 — Methods that return a value</span>
+  <h3>Methods that calculate and give back a result</h3>
+  <div class="code-block">static int add(int a, int b) {
+    return a + b;   // sends the result back to whoever called this
+}
+
+static double average(int a, int b, int c) {
+    return (double)(a + b + c) / 3;
+}
+
+static String getGrade(int marks) {
+    if (marks >= 90) return "A";
+    else if (marks >= 75) return "B";
+    else if (marks >= 60) return "C";
+    else return "F";
+}
+
+public static void main(String[] args) {
+    int sum = add(10, 20);           // sum holds 30
+    double avg = average(80, 90, 85); // avg holds 85.0
+    String grade = getGrade(87);      // grade holds "B"
+
+    System.out.println("Sum: " + sum);
+    System.out.println("Average: " + avg);
+    System.out.println("Grade: " + grade);
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>return</code> sends a value back to wherever the method was called from. The returned value must match the declared return type — <code>int</code> method must return an <code>int</code>.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div>The returned value can be stored: <code>int sum = add(10, 20)</code> — or used directly: <code>System.out.println(add(10, 20))</code>.</div></div>
+  <div class="annotation"><div class="ann-num">3</div><div>Notice <code>getGrade</code> has multiple return statements — Java exits the method the moment it hits any <code>return</code>. Only one return ever executes per method call.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 3 — Method execution flow</span>
+  <h3>What happens when a method is called</h3>
+  <div class="flow">
+    <div class="flow-box">main() starts</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">calls add(10, 20)</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">add() runs</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">returns 30</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">main() continues</div>
+  </div>
+  <p>When Java hits a method call, it <span class="highlight">pauses</span> the current method, jumps to the called method, runs it completely, then <span class="highlight">returns</span> to exactly where it left off. This is called the <span class="highlight">call stack</span> — one of the most important concepts in computer science.</p>
+</div>
+
+<div class="card">
+  <span class="badge badge-amber">Part 4 — Method overloading</span>
+  <h3>Same name, different parameters</h3>
+  <p>Java allows multiple methods with the same name as long as their parameters are different. This is called <span class="highlight">overloading</span>.</p>
+  <div class="code-block">static int add(int a, int b) {
+    return a + b;
+}
+
+static double add(double a, double b) {
+    return a + b;
+}
+
+static int add(int a, int b, int c) {
+    return a + b + c;
+}
+
+public static void main(String[] args) {
+    System.out.println(add(2, 3));        // calls first — prints 5
+    System.out.println(add(2.5, 3.5));    // calls second — prints 6.0
+    System.out.println(add(1, 2, 3));     // calls third — prints 6
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div>Java picks the right method automatically based on what arguments you pass. This is called <span class="highlight">compile-time polymorphism</span> — a term you'll hear in every Java interview.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div>You've already seen overloading without knowing it — <code>System.out.println()</code> works with int, double, String, boolean — that's because println is overloaded for every type.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-teal">Part 5 — Complete example: Grade Report</span>
+  <h3>Your Exercise 3 rewritten with methods</h3>
+  <div class="code-block">import java.util.Scanner;
+
+public class Main {
+
+    static double calcAverage(int a, int b, int c) {
+        return (double)(a + b + c) / 3;
+    }
+
+    static String calcGrade(double avg) {
+        if (avg >= 90) return "A";
+        else if (avg >= 75) return "B";
+        else if (avg >= 60) return "C";
+        else if (avg >= 40) return "D";
+        else return "F";
+    }
+
+    static String calcResult(double avg) {
+        if (avg >= 40) return "Pass";
+        else return "Fail";
+    }
+
+    static void printReport(String name, int m, int p, int c) {
+        double avg = calcAverage(m, p, c);
+        String grade = calcGrade(avg);
+        String result = calcResult(avg);
+
+        System.out.println("--- Report Card ---");
+        System.out.println("Student : " + name);
+        System.out.println("Total   : " + (m+p+c) + "/300");
+        System.out.println("Average : " + avg + "%");
+        System.out.println("Grade   : " + grade);
+        System.out.println("Result  : " + result);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Name: ");
+        String name = sc.nextLine();
+        System.out.print("Maths: ");   int m = sc.nextInt();
+        System.out.print("Physics: "); int p = sc.nextInt();
+        System.out.print("Chemistry: "); int c = sc.nextInt();
+
+        printReport(name, m, p, c);
+    }
+}</div>
+  <p>Compare this to your original Exercise 3. Same program — but now every job has its own named method. <code>main()</code> only coordinates. Each method does one thing. This is how real software is written.</p>
+</div>
+
+<button onclick="sendPrompt('I have read Lesson 5. Give me the exercises.')" style="margin-top:0.5rem;padding:10px 20px;font-size:14px;cursor:pointer;border-radius:var(--border-radius-md)">I have read this — give me the exercises ↗</button>

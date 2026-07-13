@@ -1,0 +1,162 @@
+
+<style>
+  .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1rem}
+  .badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);margin-bottom:10px}
+  .badge-teal{background:var(--color-background-success);color:var(--color-text-success)}
+  .badge-purple{background:#EEEDFE;color:#3C3489}
+  .badge-amber{background:var(--color-background-warning);color:var(--color-text-warning)}
+  .badge-red{background:var(--color-background-error);color:var(--color-text-error)}
+  @media(prefers-color-scheme:dark){.badge-purple{background:#26215C;color:#AFA9EC}}
+  .code-block{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem 1.25rem;font-family:var(--font-mono);font-size:13px;line-height:1.8;margin:0.75rem 0;overflow-x:auto;white-space:pre}
+  .annotation{display:flex;gap:10px;align-items:flex-start;margin:7px 0;font-size:13px;color:var(--color-text-secondary)}
+  .ann-num{min-width:22px;height:22px;border-radius:50%;background:var(--color-background-info);color:var(--color-text-info);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;flex-shrink:0}
+  h3{font-size:16px;font-weight:500;margin:0 0 0.5rem}
+  p{font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin:0 0 0.75rem}
+  code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-tertiary);padding:1px 5px;border-radius:4px}
+  .highlight{color:var(--color-text-primary);font-weight:500}
+  .warn-box{background:var(--color-background-warning);border-left:3px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-warning)}
+  .tip-box{background:var(--color-background-success);border-left:3px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-success)}
+  .rule-box{background:var(--color-background-error);border-left:3px solid var(--color-border-error);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-error)}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:0.75rem 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0.75rem 0}
+  .cell{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem 1rem}
+  .cell-label{font-size:11px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px}
+  .loop-parts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:0.75rem 0}
+  .part-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.6rem 0.8rem;text-align:center}
+  .part-title{font-size:11px;font-weight:600;color:var(--color-text-tertiary);margin-bottom:4px}
+  .part-code{font-family:var(--font-mono);font-size:13px;color:var(--color-text-primary);font-weight:500}
+  .part-desc{font-size:11px;color:var(--color-text-secondary);margin-top:4px}
+</style>
+
+<div class="card">
+  <span class="badge badge-teal">Lesson 4 of Phase 0</span>
+  <h3>Loops — Making Java repeat itself</h3>
+  <p>Loops are one of the most powerful tools in programming. Without them, printing numbers 1 to 1000 would mean writing 1000 lines of code. With a loop — three lines. Every algorithm, every data structure, every AI model uses loops at its core.</p>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 1 — The for loop</span>
+  <h3>Anatomy of a Java for loop</h3>
+  <div class="code-block">for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}</div>
+  <div class="loop-parts">
+    <div class="part-box">
+      <div class="part-title">PART 1 — Start</div>
+      <div class="part-code">int i = 0</div>
+      <div class="part-desc">Runs once. Creates the counter variable i, starts at 0.</div>
+    </div>
+    <div class="part-box">
+      <div class="part-title">PART 2 — Condition</div>
+      <div class="part-code">i &lt; 5</div>
+      <div class="part-desc">Checked before every iteration. Loop runs while this is true.</div>
+    </div>
+    <div class="part-box">
+      <div class="part-title">PART 3 — Step</div>
+      <div class="part-code">i++</div>
+      <div class="part-desc">Runs after every iteration. i++ means add 1 to i each time.</div>
+    </div>
+  </div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>i++</code> is shorthand for <code>i = i + 1</code>. You'll also see <code>i--</code> (subtract 1), <code>i += 2</code> (add 2), <code>i *= 2</code> (double each time).</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div>Output of the loop above: <code>0 1 2 3 4</code> — five numbers, starting at 0, stopping before 5. Sound familiar? Same logic as Python's <code>range(5)</code>.</div></div>
+  <div class="tip-box">💡 To print 1 to 5 instead of 0 to 4: start at <code>i = 1</code> and use <code>i &lt;= 5</code>. The condition controls everything.</div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 2 — Loop variations</span>
+  <h3>Different ways to control a for loop</h3>
+  <div class="grid2">
+    <div class="cell">
+      <div class="cell-label">Count up: 1 to 10</div>
+      <div class="code-block" style="margin:0">for (int i = 1; i <= 10; i++) {
+    System.out.println(i);
+}</div>
+    </div>
+    <div class="cell">
+      <div class="cell-label">Count down: 10 to 1</div>
+      <div class="code-block" style="margin:0">for (int i = 10; i >= 1; i--) {
+    System.out.println(i);
+}</div>
+    </div>
+    <div class="cell">
+      <div class="cell-label">Even numbers: 2 to 10</div>
+      <div class="code-block" style="margin:0">for (int i = 2; i <= 10; i += 2) {
+    System.out.println(i);
+}</div>
+    </div>
+    <div class="cell">
+      <div class="cell-label">Multiples of 5</div>
+      <div class="code-block" style="margin:0">for (int i = 5; i <= 50; i += 5) {
+    System.out.println(i);
+}</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 3 — while loop</span>
+  <h3>When you don't know how many times to loop</h3>
+  <p>Use a <span class="highlight">for loop</span> when you know the exact number of iterations. Use a <span class="highlight">while loop</span> when you loop until a condition changes.</p>
+  <div class="code-block">int i = 1;
+while (i <= 5) {
+    System.out.println(i);
+    i++;          // ← never forget this — without it, infinite loop
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div>The while loop checks its condition first. If it's false from the start, the loop body never runs at all.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div>Always make sure something inside the loop moves it toward the exit condition. Forgetting <code>i++</code> creates an <span class="highlight">infinite loop</span> — your program freezes forever.</div></div>
+  <div class="grid2" style="margin-top:0.75rem">
+    <div class="cell">
+      <div class="cell-label">Good use of while — unknown iterations</div>
+      <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.8;margin-top:4px">Keep asking for input until the user types a valid mark (0–100). You don't know how many wrong attempts they'll make — so while is the right choice.</div>
+    </div>
+    <div class="cell">
+      <div class="cell-label">Good use of for — known iterations</div>
+      <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.8;margin-top:4px">Print a multiplication table for 5 (5×1 to 5×10). You know exactly 10 iterations — so for is the right choice.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="badge badge-amber">Part 4 — Loops + conditionals combined</span>
+  <h3>This is where real programs begin</h3>
+  <p>Combining loops with if-else lets you process every number in a range and make decisions about each one. This pattern is the foundation of almost every algorithm you'll ever write.</p>
+  <div class="code-block">// Print whether each number 1-10 is even or odd
+for (int i = 1; i <= 10; i++) {
+    if (i % 2 == 0) {
+        System.out.println(i + " is even");
+    } else {
+        System.out.println(i + " is odd");
+    }
+}</div>
+  <div class="tip-box">💡 <strong>Remember modulus?</strong> <code>i % 2 == 0</code> means "i divides evenly by 2 — no remainder". That's the standard even/odd check used in every language, every interview, every algorithm.</div>
+</div>
+
+<div class="card">
+  <span class="badge badge-red">Part 5 — break and continue</span>
+  <h3>Controlling loop flow</h3>
+  <div class="grid2">
+    <div class="cell">
+      <div class="cell-label">break — exit the loop immediately</div>
+      <div class="code-block" style="margin:0.5rem 0">for (int i = 1; i <= 10; i++) {
+    if (i == 5) {
+        break;
+    }
+    System.out.println(i);
+}
+// prints: 1 2 3 4</div>
+    </div>
+    <div class="cell">
+      <div class="cell-label">continue — skip this iteration only</div>
+      <div class="code-block" style="margin:0.5rem 0">for (int i = 1; i <= 5; i++) {
+    if (i == 3) {
+        continue;
+    }
+    System.out.println(i);
+}
+// prints: 1 2 4 5</div>
+    </div>
+  </div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>break</code> exits the entire loop. <code>continue</code> skips only the current iteration and moves to the next one. Both are tools — use them deliberately, not by default.</div></div>
+</div>
+
+<button onclick="sendPrompt('I have read Lesson 4. Give me the exercises.')" style="margin-top:0.5rem;padding:10px 20px;font-size:14px;cursor:pointer;border-radius:var(--border-radius-md)">I have read this — give me the exercises ↗</button>

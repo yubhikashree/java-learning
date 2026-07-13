@@ -1,0 +1,184 @@
+
+<style>
+  .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1rem}
+  .badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);margin-bottom:10px}
+  .badge-teal{background:var(--color-background-success);color:var(--color-text-success)}
+  .badge-purple{background:#EEEDFE;color:#3C3489}
+  .badge-amber{background:var(--color-background-warning);color:var(--color-text-warning)}
+  .badge-red{background:var(--color-background-error);color:var(--color-text-error)}
+  @media(prefers-color-scheme:dark){.badge-purple{background:#26215C;color:#AFA9EC}}
+  .code-block{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem 1.25rem;font-family:var(--font-mono);font-size:13px;line-height:1.8;margin:0.75rem 0;overflow-x:auto;white-space:pre}
+  .annotation{display:flex;gap:10px;align-items:flex-start;margin:7px 0;font-size:13px;color:var(--color-text-secondary)}
+  .ann-num{min-width:22px;height:22px;border-radius:50%;background:var(--color-background-info);color:var(--color-text-info);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;flex-shrink:0}
+  h3{font-size:16px;font-weight:500;margin:0 0 0.5rem}
+  p{font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin:0 0 0.75rem}
+  code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-tertiary);padding:1px 5px;border-radius:4px}
+  .highlight{color:var(--color-text-primary);font-weight:500}
+  .tip-box{background:var(--color-background-success);border-left:3px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-success)}
+  .warn-box{background:var(--color-background-warning);border-left:3px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-warning)}
+  .rule-box{background:var(--color-background-error);border-left:3px solid var(--color-border-error);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-error)}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:0.75rem 0}
+  th{text-align:left;padding:7px 10px;background:var(--color-background-secondary);color:var(--color-text-secondary);font-weight:500;font-size:12px}
+  td{padding:7px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);font-size:12px}
+  td:first-child{font-family:var(--font-mono)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0.75rem 0}
+  .cell{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem 1rem}
+  .cell-label{font-size:11px;font-weight:600;color:var(--color-text-tertiary);margin-bottom:6px}
+  .char-visual{display:flex;gap:0;margin:0.75rem 0}
+  .char-cell{border:1.5px solid var(--color-border-secondary);padding:8px 12px;text-align:center;min-width:36px}
+  .char-cell:first-child{border-radius:6px 0 0 6px}
+  .char-cell:last-child{border-radius:0 6px 6px 0}
+  .char-val{font-family:var(--font-mono);font-size:14px;font-weight:600;color:var(--color-text-primary)}
+  .char-idx{font-size:10px;color:var(--color-text-tertiary);margin-top:2px}
+</style>
+
+<div class="card">
+  <span class="badge badge-teal">Lesson 7 of Phase 0</span>
+  <h3>Strings — Working with text in Java</h3>
+  <p>String is the most used class in all of Java programming. Every user input, every file name, every message — it's all Strings. Mastering String methods makes you dramatically faster at solving problems.</p>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 1 — Strings are character arrays</span>
+  <h3>What a String actually looks like in memory</h3>
+  <p>A String is internally a sequence of characters, each at an index — exactly like an array.</p>
+  <div class="char-visual">
+    <div class="char-cell"><div class="char-val">Y</div><div class="char-idx">0</div></div>
+    <div class="char-cell"><div class="char-val">u</div><div class="char-idx">1</div></div>
+    <div class="char-cell"><div class="char-val">b</div><div class="char-idx">2</div></div>
+    <div class="char-cell"><div class="char-val">h</div><div class="char-idx">3</div></div>
+    <div class="char-cell"><div class="char-val">i</div><div class="char-idx">4</div></div>
+  </div>
+  <div class="code-block">String name = "Yubhi";
+System.out.println(name.length());    // 5
+System.out.println(name.charAt(0));   // Y
+System.out.println(name.charAt(4));   // i
+System.out.println(name.charAt(name.length()-1)); // i — last character</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>charAt(index)</code> returns the character at that position. Returns a <code>char</code> type — a single character in single quotes like <code>'Y'</code>.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><code>name.length() - 1</code> always gives you the last character's index — same logic as arrays.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 2 — Essential String methods</span>
+  <h3>The methods you'll use in every program</h3>
+  <div class="code-block">String s = "  Hello, World!  ";
+
+// Case
+System.out.println(s.toUpperCase());   // "  HELLO, WORLD!  "
+System.out.println(s.toLowerCase());   // "  hello, world!  "
+
+// Trimming whitespace
+System.out.println(s.trim());          // "Hello, World!"
+
+// Searching
+System.out.println(s.contains("World"));  // true
+System.out.println(s.indexOf("World"));   // 9 — position where it starts
+System.out.println(s.startsWith("  He")); // true
+System.out.println(s.endsWith("!  "));    // true
+
+// Extracting
+System.out.println(s.substring(2, 7));    // "Hello"
+System.out.println(s.trim().substring(7));// ", World!"
+
+// Replacing
+System.out.println(s.replace("World", "Java")); // "  Hello, Java!  "
+
+// Splitting
+String csv = "Yubhi,Arun,Priya";
+String[] names = csv.split(",");
+System.out.println(names[0]);  // Yubhi
+System.out.println(names[1]);  // Arun
+System.out.println(names[2]);  // Priya</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>substring(start, end)</code> extracts from <code>start</code> up to but NOT including <code>end</code>. Same exclusive upper bound rule as <code>range()</code> in Python.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><code>split(",")</code> breaks a String into an array using a delimiter. This is how you process CSV data — something you'll do constantly in data science.</div></div>
+  <div class="annotation"><div class="ann-num">3</div><div>String methods never modify the original String — they always return a new one. Strings in Java are <span class="highlight">immutable</span> — once created, they cannot be changed.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 3 — String comparison</span>
+  <h3>The most important String rule in Java</h3>
+  <div class="rule-box">🚨 NEVER use == to compare Strings. Always use .equals(). This is one of the most common bugs in Java and it appears in every fresher interview.</div>
+  <div class="code-block">String a = "hello";
+String b = "hello";
+
+// WRONG — compares memory addresses, not content
+if (a == b)  // may give unexpected results
+
+// CORRECT — compares actual content
+if (a.equals(b))          // true
+if (a.equalsIgnoreCase(b)) // true — ignores case difference</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>==</code> checks if two variables point to the exact same object in memory. <code>.equals()</code> checks if the content is the same. For Strings, you almost always want content comparison.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><code>equalsIgnoreCase()</code> is useful for user input — if someone types "YES", "yes", or "Yes", they all mean the same thing.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 4 — Looping through a String</span>
+  <h3>Processing character by character</h3>
+  <div class="code-block">String name = "Yubhi";
+
+// Count vowels
+int vowelCount = 0;
+for (int i = 0; i < name.length(); i++) {
+    char c = name.charAt(i);
+    if (c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||
+        c=='A'||c=='E'||c=='I'||c=='O'||c=='U') {
+        vowelCount++;
+    }
+}
+System.out.println("Vowels in " + name + ": " + vowelCount); // 2</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>char c = name.charAt(i)</code> — note the type is <code>char</code>, not <code>String</code>. A <code>char</code> holds a single character and uses single quotes: <code>'a'</code> not <code>"a"</code>.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div>Character comparison uses <code>==</code> — not <code>.equals()</code>. The <code>==</code> rule only applies to String objects, not primitive <code>char</code> values.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-amber">Part 5 — Converting between types</span>
+  <h3>String ↔ int ↔ double conversions</h3>
+  <div class="code-block">// String to int
+String numStr = "42";
+int num = Integer.parseInt(numStr);    // num = 42
+System.out.println(num + 8);          // 50 — actual addition
+
+// String to double
+String dblStr = "3.14";
+double d = Double.parseDouble(dblStr); // d = 3.14
+
+// int to String
+int age = 17;
+String ageStr = String.valueOf(age);   // "17"
+String ageStr2 = "" + age;             // "17" — quick trick
+
+// Useful: check if string is a number before parsing
+String input = "abc";
+try {
+    int val = Integer.parseInt(input);
+} catch (NumberFormatException e) {
+    System.out.println("Not a valid number!");
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>Integer.parseInt()</code> is used constantly — whenever you read a number as text and need to do math with it. If the String isn't a valid number, it throws <code>NumberFormatException</code>.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><code>try-catch</code> is your first look at <span class="highlight">exception handling</span> — a full lesson coming soon. For now just know it catches errors gracefully instead of crashing.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-teal">Part 6 — Quick reference</span>
+  <h3>All String methods at a glance</h3>
+  <table>
+    <tr><th>Method</th><th>What it does</th><th>Returns</th></tr>
+    <tr><td>length()</td><td>Number of characters</td><td>int</td></tr>
+    <tr><td>charAt(i)</td><td>Character at index i</td><td>char</td></tr>
+    <tr><td>indexOf("x")</td><td>First position of "x", -1 if not found</td><td>int</td></tr>
+    <tr><td>contains("x")</td><td>Whether String contains "x"</td><td>boolean</td></tr>
+    <tr><td>substring(a,b)</td><td>Extract from index a to b-1</td><td>String</td></tr>
+    <tr><td>toUpperCase()</td><td>All uppercase</td><td>String</td></tr>
+    <tr><td>toLowerCase()</td><td>All lowercase</td><td>String</td></tr>
+    <tr><td>trim()</td><td>Remove leading/trailing spaces</td><td>String</td></tr>
+    <tr><td>replace(a,b)</td><td>Replace all occurrences of a with b</td><td>String</td></tr>
+    <tr><td>split(",")</td><td>Split into array by delimiter</td><td>String[]</td></tr>
+    <tr><td>equals(s)</td><td>Compare content exactly</td><td>boolean</td></tr>
+    <tr><td>equalsIgnoreCase(s)</td><td>Compare ignoring case</td><td>boolean</td></tr>
+    <tr><td>isEmpty()</td><td>True if length is 0</td><td>boolean</td></tr>
+    <tr><td>startsWith("x")</td><td>True if begins with "x"</td><td>boolean</td></tr>
+    <tr><td>endsWith("x")</td><td>True if ends with "x"</td><td>boolean</td></tr>
+  </table>
+</div>
+
+<button onclick="sendPrompt('I have read Lesson 7. Give me the exercises.')" style="margin-top:0.5rem;padding:10px 20px;font-size:14px;cursor:pointer;border-radius:var(--border-radius-md)">I have read this — give me the exercises ↗</button>

@@ -1,0 +1,77 @@
+
+<style>
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1rem}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);margin-bottom:10px}
+.badge-teal{background:var(--color-background-success);color:var(--color-text-success)}
+.badge-purple{background:#EEEDFE;color:#3C3489}
+.badge-amber{background:var(--color-background-warning);color:var(--color-text-warning)}
+@media(prefers-color-scheme:dark){.badge-purple{background:#26215C;color:#AFA9EC}}
+.code-block{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem 1.25rem;font-family:var(--font-mono);font-size:13px;line-height:1.7;margin:0.75rem 0;overflow-x:auto}
+.annotation{display:flex;gap:10px;align-items:flex-start;margin:6px 0;font-size:13px;color:var(--color-text-secondary)}
+.ann-num{min-width:20px;height:20px;border-radius:50%;background:var(--color-background-info);color:var(--color-text-info);font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0.75rem 0}
+.compare-cell{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem 1rem}
+.compare-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px}
+h3{font-size:16px;font-weight:500;margin:0 0 0.5rem}
+p{font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin:0 0 0.75rem}
+.highlight{color:var(--color-text-primary);font-weight:500}
+</style>
+
+<h2 class="sr-only">Java Lesson 1: Your First Program</h2>
+
+<div class="card">
+  <span class="badge badge-teal">Lesson 1 of Phase 0</span>
+  <h3>Java — your first program</h3>
+  <p>Java is the language most used in coding interviews, backend systems, and Android apps. It's also what most Indian engineering colleges teach. Learning it now puts you 3–4 months ahead of your classmates.</p>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Theory</span>
+  <h3>How Java is different from Python</h3>
+  <div class="compare-row">
+    <div class="compare-cell">
+      <div class="compare-label">Python</div>
+      <div style="font-family:var(--font-mono);font-size:12px;line-height:1.8;color:var(--color-text-primary)">print("Hello")<br><br># Just run the file.<br># Python figures<br># out the rest.</div>
+    </div>
+    <div class="compare-cell">
+      <div class="compare-label">Java</div>
+      <div style="font-family:var(--font-mono);font-size:12px;line-height:1.8;color:var(--color-text-primary)">class Main {<br>&nbsp;&nbsp;public static void main<br>&nbsp;&nbsp;(String[] args) {<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println<br>&nbsp;&nbsp;&nbsp;&nbsp;("Hello");<br>&nbsp;&nbsp;}<br>}</div>
+    </div>
+  </div>
+  <p>Java is more <span class="highlight">explicit</span> — you have to tell it more things upfront. This feels verbose at first, but it makes large programs much safer and easier to debug. Every line means something.</p>
+</div>
+
+<div class="card">
+  <span class="badge badge-teal">Line by line</span>
+  <h3>Anatomy of a Java program</h3>
+  <div class="code-block">public class Main {<br>&nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Hello, World!");<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</div>
+  <div class="annotation"><div class="ann-num">1</div><div><span class="highlight">public class Main</span> — Every Java program lives inside a class. Think of a class as a container. The filename must match: this file is saved as <code>Main.java</code>.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><span class="highlight">public static void main(String[] args)</span> — This is the entry point. When you run a Java program, Java looks for exactly this line and starts here. Every Java program must have it.</div></div>
+  <div class="annotation"><div class="ann-num">3</div><div><span class="highlight">System.out.println(...)</span> — This is Java's equivalent of Python's <code>print()</code>. The semicolon <code>;</code> at the end is mandatory — Java uses it to know where one statement ends.</div></div>
+  <div class="annotation"><div class="ann-num">4</div><div><span class="highlight">{ }</span> — Curly braces replace Python's indentation for defining blocks. You still indent for readability, but the braces are what Java actually reads.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-amber">Key difference to remember</span>
+  <h3>Semicolons and braces</h3>
+  <p>In Python, a new line ends a statement. In Java, a <span class="highlight">semicolon ends a statement</span> and <span class="highlight">curly braces define blocks</span>. These two things cause 80% of beginner Java errors. The compiler will tell you exactly where you forgot them.</p>
+  <div class="compare-row">
+    <div class="compare-cell">
+      <div class="compare-label">Python — newline ends statement</div>
+      <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary)">x = 5<br>y = 10<br>print(x + y)</div>
+    </div>
+    <div class="compare-cell">
+      <div class="compare-label">Java — semicolon ends statement</div>
+      <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary)">int x = 5;<br>int y = 10;<br>System.out.println(x + y);</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Notice something?</span>
+  <h3>Java makes you declare types</h3>
+  <p>In Python you write <code>x = 5</code>. In Java you write <code>int x = 5;</code> — you must tell Java that x holds an integer. This is called <span class="highlight">static typing</span>. Java checks your types before the program even runs, catching a whole class of bugs early.</p>
+  <div class="code-block">int age = 18;          // whole numbers<br>double gpa = 9.2;      // decimal numbers<br>String name = "Arjun"; // text<br>boolean passed = true; // true or false</div>
+</div>
+
+<button onclick="sendPrompt('I have read Lesson 1. Take me to the practice exercises.')" style="margin-top:0.5rem;padding:10px 20px;font-size:14px;cursor:pointer;border-radius:var(--border-radius-md)">I have read this — give me the exercises ↗</button>

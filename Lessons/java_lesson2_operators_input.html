@@ -1,0 +1,74 @@
+
+<style>
+  .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1rem}
+  .badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);margin-bottom:10px}
+  .badge-teal{background:var(--color-background-success);color:var(--color-text-success)}
+  .badge-purple{background:#EEEDFE;color:#3C3489}
+  .badge-amber{background:var(--color-background-warning);color:var(--color-text-warning)}
+  .badge-red{background:var(--color-background-error);color:var(--color-text-error)}
+  @media(prefers-color-scheme:dark){.badge-purple{background:#26215C;color:#AFA9EC}}
+  .code-block{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem 1.25rem;font-family:var(--font-mono);font-size:13px;line-height:1.8;margin:0.75rem 0;overflow-x:auto}
+  .annotation{display:flex;gap:10px;align-items:flex-start;margin:6px 0;font-size:13px;color:var(--color-text-secondary)}
+  .ann-num{min-width:22px;height:22px;border-radius:50%;background:var(--color-background-info);color:var(--color-text-info);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;flex-shrink:0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0.75rem 0}
+  .cell{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem 1rem}
+  .cell-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px}
+  h3{font-size:16px;font-weight:500;margin:0 0 0.5rem}
+  p{font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin:0 0 0.75rem}
+  code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-tertiary);padding:1px 5px;border-radius:4px}
+  .highlight{color:var(--color-text-primary);font-weight:500}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:0.75rem 0}
+  th{text-align:left;padding:6px 10px;background:var(--color-background-secondary);color:var(--color-text-secondary);font-weight:500;font-size:12px}
+  td{padding:7px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);font-family:var(--font-mono);font-size:12px}
+  .warn-box{background:var(--color-background-warning);border-left:3px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-warning)}
+  .tip-box{background:var(--color-background-success);border-left:3px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-success)}
+</style>
+
+<div class="card">
+  <span class="badge badge-teal">Lesson 2 of Phase 0</span>
+  <h3>Operators, Type Conversion & User Input</h3>
+  <p>By the end of this lesson you'll write a program that takes your name and marks as input, calculates your grade, and prints a personalised result — your first <span class="highlight">interactive Java program</span>.</p>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 1 — Arithmetic Operators</span>
+  <h3>The 6 operators you'll use constantly</h3>
+  <table>
+    <tr><th>Operator</th><th>Meaning</th><th>Example</th><th>Result</th></tr>
+    <tr><td>+</td><td>Addition</td><td>10 + 3</td><td>13</td></tr>
+    <tr><td>-</td><td>Subtraction</td><td>10 - 3</td><td>7</td></tr>
+    <tr><td>*</td><td>Multiplication</td><td>10 * 3</td><td>30</td></tr>
+    <tr><td>/</td><td>Division</td><td>10 / 3</td><td>3 ⚠️</td></tr>
+    <tr><td>%</td><td>Modulus (remainder)</td><td>10 % 3</td><td>1</td></tr>
+    <tr><td>(double)x/y</td><td>Decimal division</td><td>(double)10/3</td><td>3.333...</td></tr>
+  </table>
+  <div class="warn-box">⚠️ <strong>Integer division trap:</strong> In Java, <code>10 / 3</code> gives <code>3</code>, not <code>3.33</code>. When both numbers are <code>int</code>, Java discards the decimal. This is one of the most common bugs in Java — remember it now.</div>
+  <div class="code-block">int a = 10, b = 3;<br><br>System.out.println(a + b);   // 13<br>System.out.println(a - b);   // 7<br>System.out.println(a * b);   // 30<br>System.out.println(a / b);   // 3  ← not 3.33!<br>System.out.println(a % b);   // 1  ← remainder<br>System.out.println((double)a / b); // 3.3333...</div>
+  <div class="tip-box">💡 <strong>Modulus is more useful than it looks.</strong> <code>number % 2 == 0</code> tells you if a number is even. You'll use this in almost every DSA problem involving even/odd checks.</div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 2 — String Concatenation</span>
+  <h3>Joining text and variables</h3>
+  <p>In Python you might use f-strings: <code>f"Hello {name}"</code>. Java uses the <code>+</code> operator to join strings and variables:</p>
+  <div class="code-block">String name = "Yubhi";<br>int age = 17;<br><br>System.out.println("Hello, " + name);           // Hello, Yubhi<br>System.out.println("Age: " + age);              // Age: 17<br>System.out.println(name + " is " + age + " years old."); // Yubhi is 17 years old.</div>
+  <div class="warn-box">⚠️ <strong>Watch out:</strong> <code>System.out.println("Value: " + 2 + 3)</code> prints <code>Value: 23</code>, not <code>Value: 5</code>. Java reads left to right — once it sees a String, the <code>+</code> becomes concatenation, not addition. Fix: <code>"Value: " + (2 + 3)</code></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-amber">Part 3 — Taking User Input</span>
+  <h3>The Scanner class</h3>
+  <p>Python uses <code>input()</code>. Java uses a <span class="highlight">Scanner object</span>. This is your first encounter with importing a class — a pattern you'll see thousands of times.</p>
+  <div class="code-block">import java.util.Scanner;  // ← tell Java you need Scanner<br><br>public class Main {<br>    public static void main(String[] args) {<br><br>        Scanner sc = new Scanner(System.in);  // create Scanner<br><br>        System.out.print("Enter your name: ");<br>        String name = sc.nextLine();  // read a String<br><br>        System.out.print("Enter your age: ");<br>        int age = sc.nextInt();       // read an int<br><br>        System.out.println("Hello " + name + ", you are " + age);<br>    }<br>}</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>import java.util.Scanner</code> — Scanner lives in Java's utility library. You must import it before using it, once per file, at the very top.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><code>new Scanner(System.in)</code> — creates a Scanner connected to your keyboard input. <code>System.in</code> is the keyboard, just as <code>System.out</code> is the screen.</div></div>
+  <div class="annotation"><div class="ann-num">3</div><div><code>sc.nextLine()</code> reads text. <code>sc.nextInt()</code> reads a whole number. <code>sc.nextDouble()</code> reads a decimal. Match the method to the type you expect.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-teal">Putting it together — Grade Calculator</span>
+  <h3>Read carefully, then build it yourself</h3>
+  <div class="code-block">import java.util.Scanner;<br><br>public class Main {<br>    public static void main(String[] args) {<br>        Scanner sc = new Scanner(System.in);<br><br>        System.out.print("Enter your name: ");<br>        String name = sc.nextLine();<br><br>        System.out.print("Enter marks out of 100: ");<br>        int marks = sc.nextInt();<br><br>        double percentage = (double) marks / 100 * 100;<br><br>        System.out.println("--- Result ---");<br>        System.out.println("Student: " + name);<br>        System.out.println("Marks: " + marks + "/100");<br>        System.out.println("Percentage: " + percentage + "%");<br>    }<br>}</div>
+</div>
+
+<button onclick="sendPrompt('I have read Lesson 2. Ready for the exercises.')" style="margin-top:0.5rem;padding:10px 20px;font-size:14px;cursor:pointer;border-radius:var(--border-radius-md)">I have read this — give me the exercises ↗</button>

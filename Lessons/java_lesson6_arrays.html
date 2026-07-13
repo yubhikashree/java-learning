@@ -1,0 +1,169 @@
+
+<style>
+  .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1rem}
+  .badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);margin-bottom:10px}
+  .badge-teal{background:var(--color-background-success);color:var(--color-text-success)}
+  .badge-purple{background:#EEEDFE;color:#3C3489}
+  .badge-amber{background:var(--color-background-warning);color:var(--color-text-warning)}
+  .badge-red{background:var(--color-background-error);color:var(--color-text-error)}
+  @media(prefers-color-scheme:dark){.badge-purple{background:#26215C;color:#AFA9EC}}
+  .code-block{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem 1.25rem;font-family:var(--font-mono);font-size:13px;line-height:1.8;margin:0.75rem 0;overflow-x:auto;white-space:pre}
+  .annotation{display:flex;gap:10px;align-items:flex-start;margin:7px 0;font-size:13px;color:var(--color-text-secondary)}
+  .ann-num{min-width:22px;height:22px;border-radius:50%;background:var(--color-background-info);color:var(--color-text-info);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;flex-shrink:0}
+  h3{font-size:16px;font-weight:500;margin:0 0 0.5rem}
+  p{font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin:0 0 0.75rem}
+  code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-tertiary);padding:1px 5px;border-radius:4px}
+  .highlight{color:var(--color-text-primary);font-weight:500}
+  .tip-box{background:var(--color-background-success);border-left:3px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-success)}
+  .warn-box{background:var(--color-background-warning);border-left:3px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-warning)}
+  .rule-box{background:var(--color-background-error);border-left:3px solid var(--color-border-error);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-error)}
+  .array-visual{display:flex;gap:0;margin:0.75rem 0;align-items:stretch}
+  .array-cell{border:1.5px solid var(--color-border-secondary);padding:10px 16px;text-align:center;min-width:48px}
+  .array-cell:first-child{border-radius:6px 0 0 6px}
+  .array-cell:last-child{border-radius:0 6px 6px 0}
+  .array-val{font-family:var(--font-mono);font-size:15px;font-weight:600;color:var(--color-text-primary)}
+  .array-idx{font-size:10px;color:var(--color-text-tertiary);margin-top:3px}
+  .array-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:6px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0.75rem 0}
+  .cell{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem 1rem}
+  .cell-label{font-size:11px;font-weight:600;color:var(--color-text-tertiary);margin-bottom:6px}
+</style>
+
+<div class="card">
+  <span class="badge badge-teal">Lesson 6 of Phase 0</span>
+  <h3>Arrays — Storing multiple values in one variable</h3>
+  <p>An array is a fixed-size, ordered collection of values of the same type. Instead of 100 separate variables for 100 students, you have one array with 100 slots. Arrays are the foundation of every data structure you'll ever learn.</p>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 1 — Creating and visualising arrays</span>
+  <h3>What an array looks like in memory</h3>
+  <div class="array-label">int[] marks = {85, 90, 78, 92, 88};</div>
+  <div class="array-visual">
+    <div class="array-cell"><div class="array-val">85</div><div class="array-idx">index 0</div></div>
+    <div class="array-cell"><div class="array-val">90</div><div class="array-idx">index 1</div></div>
+    <div class="array-cell"><div class="array-val">78</div><div class="array-idx">index 2</div></div>
+    <div class="array-cell"><div class="array-val">92</div><div class="array-idx">index 3</div></div>
+    <div class="array-cell"><div class="array-val">88</div><div class="array-idx">index 4</div></div>
+  </div>
+  <p>Five values, five slots, indices 0 through 4. The array has a fixed size of 5 — you cannot add a 6th element later. That's the key difference from Python lists.</p>
+  <div class="code-block">// Three ways to create arrays
+
+// Way 1 — declare and initialise together
+int[] marks = {85, 90, 78, 92, 88};
+
+// Way 2 — declare size first, fill later
+int[] marks = new int[5];
+marks[0] = 85;
+marks[1] = 90;
+marks[2] = 78;
+
+// Way 3 — declare, then initialise separately
+int[] marks;
+marks = new int[]{85, 90, 78, 92, 88};</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>int[]</code> means "array of integers". The square brackets tell Java this is an array, not a single int.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><code>new int[5]</code> creates 5 empty slots, all initialised to 0 by default. For String arrays, default is <code>null</code>. For boolean arrays, default is <code>false</code>.</div></div>
+  <div class="warn-box">⚠️ <strong>Fixed size:</strong> Once you create <code>new int[5]</code>, it has exactly 5 slots forever. You cannot resize it. If you need a resizable collection, use <code>ArrayList</code> — coming in Lesson 7.</div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 2 — Accessing and modifying elements</span>
+  <h3>Reading and writing array values</h3>
+  <div class="code-block">int[] marks = {85, 90, 78, 92, 88};
+
+// Reading
+System.out.println(marks[0]);  // 85 — first element
+System.out.println(marks[4]);  // 88 — last element
+System.out.println(marks.length); // 5 — size of array
+
+// Modifying
+marks[2] = 95;  // changes 78 to 95
+System.out.println(marks[2]);  // now prints 95</div>
+  <div class="rule-box">🚨 <strong>ArrayIndexOutOfBoundsException</strong> — the most common array error. If your array has 5 elements (indices 0–4) and you try <code>marks[5]</code>, Java throws this error and crashes. Always remember: last valid index = length - 1.</div>
+  <div class="tip-box">💡 <code>marks.length</code> — not <code>marks.length()</code>. No parentheses. Length is a property, not a method. This catches everyone at least once.</div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 3 — Looping through arrays</span>
+  <h3>Arrays and loops — inseparable partners</h3>
+  <div class="code-block">int[] marks = {85, 90, 78, 92, 88};
+
+// Standard for loop
+for (int i = 0; i < marks.length; i++) {
+    System.out.println("Student " + (i+1) + ": " + marks[i]);
+}
+
+// Enhanced for loop (for-each) — cleaner when you don't need index
+for (int mark : marks) {
+    System.out.println(mark);
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div>Always use <code>i &lt; marks.length</code> as your condition — not <code>i &lt;= marks.length</code>. The last valid index is <code>length - 1</code>, so <code>&lt;</code> is correct.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div>The enhanced for loop <code>for (int mark : marks)</code> reads as "for each mark in marks". Use it when you only need the value, not the position. Python equivalent: <code>for mark in marks</code>.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 4 — Common array operations</span>
+  <h3>Sum, average, max, min — the core four</h3>
+  <div class="code-block">int[] marks = {85, 90, 78, 92, 88};
+
+// Sum
+int sum = 0;
+for (int mark : marks) {
+    sum += mark;  // shorthand for sum = sum + mark
+}
+System.out.println("Sum: " + sum);  // 433
+
+// Average
+double avg = (double) sum / marks.length;
+System.out.println("Average: " + avg);  // 86.6
+
+// Maximum
+int max = marks[0];  // assume first is biggest
+for (int i = 1; i < marks.length; i++) {
+    if (marks[i] > max) {
+        max = marks[i];
+    }
+}
+System.out.println("Max: " + max);  // 92
+
+// Minimum
+int min = marks[0];  // assume first is smallest
+for (int i = 1; i < marks.length; i++) {
+    if (marks[i] < min) {
+        min = marks[i];
+    }
+}
+System.out.println("Min: " + min);  // 78</div>
+  <div class="annotation"><div class="ann-num">1</div><div>Always initialise <code>max</code> and <code>min</code> to <code>marks[0]</code> — the first element. Never initialise to 0, because if all marks are negative, 0 would be wrong.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><code>sum += mark</code> is shorthand for <code>sum = sum + mark</code>. Similarly <code>-=</code>, <code>*=</code>, <code>/=</code>. You'll use these constantly.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-amber">Part 5 — Taking array input from user</span>
+  <h3>Building an array dynamically</h3>
+  <div class="code-block">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("How many students? ");
+        int n = sc.nextInt();
+
+        int[] marks = new int[n];  // size decided by user
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter mark for student " + (i+1) + ": ");
+            marks[i] = sc.nextInt();
+        }
+
+        System.out.println("You entered: ");
+        for (int mark : marks) {
+            System.out.println(mark);
+        }
+    }
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div>The array size <code>new int[n]</code> is determined at runtime based on user input. This is dynamic sizing — the size is fixed once created, but chosen by the user.</div></div>
+</div>
+
+<button onclick="sendPrompt('I have read Lesson 6. Give me the exercises.')" style="margin-top:0.5rem;padding:10px 20px;font-size:14px;cursor:pointer;border-radius:var(--border-radius-md)">I have read this — give me the exercises ↗</button>

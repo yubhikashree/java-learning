@@ -1,0 +1,123 @@
+
+<style>
+  .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1rem}
+  .badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);margin-bottom:10px}
+  .badge-teal{background:var(--color-background-success);color:var(--color-text-success)}
+  .badge-purple{background:#EEEDFE;color:#3C3489}
+  .badge-amber{background:var(--color-background-warning);color:var(--color-text-warning)}
+  .badge-red{background:var(--color-background-error);color:var(--color-text-error)}
+  @media(prefers-color-scheme:dark){.badge-purple{background:#26215C;color:#AFA9EC}}
+  .code-block{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem 1.25rem;font-family:var(--font-mono);font-size:13px;line-height:1.8;margin:0.75rem 0;overflow-x:auto;white-space:pre}
+  .annotation{display:flex;gap:10px;align-items:flex-start;margin:6px 0;font-size:13px;color:var(--color-text-secondary)}
+  .ann-num{min-width:22px;height:22px;border-radius:50%;background:var(--color-background-info);color:var(--color-text-info);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;flex-shrink:0}
+  h3{font-size:16px;font-weight:500;margin:0 0 0.5rem}
+  p{font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin:0 0 0.75rem}
+  code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-tertiary);padding:1px 5px;border-radius:4px}
+  .highlight{color:var(--color-text-primary);font-weight:500}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:0.75rem 0}
+  th{text-align:left;padding:6px 10px;background:var(--color-background-secondary);color:var(--color-text-secondary);font-weight:500;font-size:12px}
+  td{padding:7px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);font-family:var(--font-mono);font-size:12px}
+  .warn-box{background:var(--color-background-warning);border-left:3px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-warning)}
+  .tip-box{background:var(--color-background-success);border-left:3px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-success)}
+  .rule-box{background:var(--color-background-error);border-left:3px solid var(--color-border-error);border-radius:var(--border-radius-md);padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-error)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0.75rem 0}
+  .cell{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem 1rem}
+  .cell-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px}
+</style>
+
+<div class="card">
+  <span class="badge badge-teal">Lesson 3 of Phase 0</span>
+  <h3>Conditionals — Making decisions in Java</h3>
+  <p>Programs that can't make decisions are just calculators. Conditionals are what give your programs intelligence — the ability to behave differently based on input.</p>
+  <div class="rule-box">🔒 Golden rule you discovered yourself: <strong>Always use curly braces</strong> — even for single-line blocks. No exceptions.</div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 1 — Comparison & Logical Operators</span>
+  <h3>The operators that power every condition</h3>
+  <table>
+    <tr><th>Operator</th><th>Meaning</th><th>Example</th><th>Result</th></tr>
+    <tr><td>==</td><td>Equal to</td><td>5 == 5</td><td>true</td></tr>
+    <tr><td>!=</td><td>Not equal to</td><td>5 != 3</td><td>true</td></tr>
+    <tr><td>&gt;</td><td>Greater than</td><td>7 &gt; 3</td><td>true</td></tr>
+    <tr><td>&lt;</td><td>Less than</td><td>3 &lt; 7</td><td>true</td></tr>
+    <tr><td>&gt;=</td><td>Greater or equal</td><td>5 &gt;= 5</td><td>true</td></tr>
+    <tr><td>&lt;=</td><td>Less or equal</td><td>4 &lt;= 5</td><td>true</td></tr>
+    <tr><td>&&</td><td>AND — both must be true</td><td>age&gt;=18 && age&lt;=25</td><td>depends</td></tr>
+    <tr><td>||</td><td>OR — at least one true</td><td>x==0 || y==0</td><td>depends</td></tr>
+    <tr><td>!</td><td>NOT — flips true/false</td><td>!(x==5)</td><td>flips</td></tr>
+  </table>
+  <div class="warn-box">⚠️ <strong>Critical:</strong> <code>==</code> checks equality. <code>=</code> assigns a value. Writing <code>if (x = 5)</code> instead of <code>if (x == 5)</code> is a bug that has crashed real systems. Every Java developer has made this mistake at least once.</div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 2 — if / else if / else</span>
+  <h3>Full structure with curly braces</h3>
+  <div class="code-block">int marks = 85;
+
+if (marks >= 90) {
+    System.out.println("Grade: A");
+    System.out.println("Outstanding!");
+} else if (marks >= 75) {
+    System.out.println("Grade: B");
+    System.out.println("Well done!");
+} else if (marks >= 60) {
+    System.out.println("Grade: C");
+    System.out.println("Keep improving.");
+} else {
+    System.out.println("Grade: F");
+    System.out.println("Please revise.");
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div>Java checks conditions <strong>top to bottom</strong> and stops at the first true one. If marks is 85, it skips the first condition, matches the second, runs that block, and ignores everything else.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div>The <code>else</code> block at the end is a safety net — it runs only if <strong>none</strong> of the above conditions matched. Always include it to handle unexpected input.</div></div>
+</div>
+
+<div class="card">
+  <span class="badge badge-purple">Part 3 — Logical Operators in practice</span>
+  <h3>Combining conditions with && and ||</h3>
+  <div class="code-block">int age = 20;
+boolean hasID = true;
+
+// AND — both conditions must be true
+if (age >= 18 && hasID == true) {
+    System.out.println("Entry allowed");
+}
+
+// OR — at least one must be true
+int x = 0, y = 5;
+if (x == 0 || y == 0) {
+    System.out.println("At least one is zero");
+}
+
+// NOT — flips the condition
+boolean isRaining = false;
+if (!isRaining) {
+    System.out.println("Go for a walk!");
+}</div>
+  <div class="tip-box">💡 <strong>Short-circuit evaluation:</strong> In <code>&&</code>, if the first condition is false, Java doesn't even check the second — it already knows the result is false. In <code>||</code>, if the first is true, Java skips the second. This matters in interviews.</div>
+</div>
+
+<div class="card">
+  <span class="badge badge-amber">Part 4 — switch statement</span>
+  <h3>When you have many exact values to check</h3>
+  <div class="code-block">int day = 3;
+
+switch (day) {
+    case 1:
+        System.out.println("Monday");
+        break;
+    case 2:
+        System.out.println("Tuesday");
+        break;
+    case 3:
+        System.out.println("Wednesday");
+        break;
+    default:
+        System.out.println("Other day");
+}</div>
+  <div class="annotation"><div class="ann-num">1</div><div><code>break</code> is mandatory after each case. Without it, Java "falls through" to the next case and runs it too — a very common bug called <strong>fall-through</strong>.</div></div>
+  <div class="annotation"><div class="ann-num">2</div><div><code>default</code> is the switch equivalent of <code>else</code> — runs when no case matches.</div></div>
+  <div class="annotation"><div class="ann-num">3</div><div>Use <code>switch</code> when checking one variable against many <strong>exact</strong> values. Use <code>if-else</code> when checking ranges like <code>&gt;= 90</code>.</div></div>
+</div>
+
+<button onclick="sendPrompt('I have read Lesson 3. Give me the exercises.')" style="margin-top:0.5rem;padding:10px 20px;font-size:14px;cursor:pointer;border-radius:var(--border-radius-md)">I have read this — give me the exercises ↗</button>
